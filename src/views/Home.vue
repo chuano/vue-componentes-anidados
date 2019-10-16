@@ -1,18 +1,46 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <user-profile
+    :user="user"
+    class="border-red padding"
+  >
+  </user-profile>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import UserProfile from '@/components/UserProfile'
 
 export default {
-  name: 'home',
+  name: 'Home',
+  data() {
+    return {
+      user: null
+    }
+  },
+  created() {
+    this.getUser();
+  },
+  methods: {
+    getUser() {
+      this.user = {
+        name: 'Name',
+        lastname: 'Lastname',
+        address: [
+          {
+            address: 'Address',
+            zipCode: '03640',
+            mainAddress: true
+          },
+          {
+            address: 'Address 2',
+            zipCode: '03640',
+            mainAddress: false
+          }
+        ]
+      };
+    }
+  },
   components: {
-    HelloWorld
+    UserProfile
   }
 }
 </script>
